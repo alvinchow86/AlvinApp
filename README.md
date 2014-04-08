@@ -1,4 +1,4 @@
-androidtestapp
+AlvinApp
 ==============
 
 Android tutorial app
