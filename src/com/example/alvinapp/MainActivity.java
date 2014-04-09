@@ -4,12 +4,14 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
@@ -86,5 +88,28 @@ public class MainActivity extends ActionBarActivity {
             return rootView;
         }
     }
+
+    public static class BetterFragment extends ListFragment {
+
+        public BetterFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.list_fragment_main, container,
+                    false);
+
+            String[] items = {"Engineering","Operations","Merchant"};
+
+            /*
+            this.setListAdapter(new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1,
+                    items));
+            */
+            return rootView;
+        }
+    }
+
 
 }
