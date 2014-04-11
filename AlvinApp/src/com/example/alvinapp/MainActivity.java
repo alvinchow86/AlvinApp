@@ -16,7 +16,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,8 +34,41 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        ActionBar actionBar = getSupportActionBar();
+
         setContentView(R.layout.activity_main);
+
+
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        // Create a tab listener that is called when the user changes tabs.
+        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+                // show the given tab
+                Toast.makeText(MainActivity.this, tab.getText(), Toast.LENGTH_SHORT).show();
+            }
+
+            public void onTabUnselected(ActionBar.Tab tab,
+                    FragmentTransaction ft) {
+                // hide the given tab
+            }
+
+            public void onTabReselected(ActionBar.Tab tab,
+                    FragmentTransaction ft) {
+                // probably ignore this event
+            }
+        };
+
+        for (int i = 0; i < 3; i++) {
+            actionBar.addTab(
+                    actionBar.newTab()
+                            .setText("Item " + (i + 1))
+                            .setTabListener(tabListener));
+        }
+
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -48,6 +83,7 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
         // return true;
+
     }
 
     private void showAlert(String message) {
