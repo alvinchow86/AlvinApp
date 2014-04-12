@@ -9,5 +9,7 @@
     <string name="button_network_test">Network</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_foo">FooActivity</string>
+    <string name="button_startfoo">Foo</string>
 
 </resources>

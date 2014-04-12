@@ -124,6 +124,12 @@ public class MainActivity extends ActionBarActivity {
         this.startActivity(intent);
     }
 
+    public void startFoo(View view) {
+        // Do something in response to button
+        Intent intent = new Intent(this, FooActivity.class);
+        this.startActivity(intent);
+    }
+
     public void networkTest(View view) {
         // showAlert("algorithm");
         String stringUrl = "http://doordash.ngrok.com/api/consumer/me";
