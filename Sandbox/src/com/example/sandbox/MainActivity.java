@@ -9,9 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import android.os.Build;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements ItemsFragment.Callbacks{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,5 +47,10 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemSelected(long id) {
+        String message = "Activity got " + id;
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 
 }
