@@ -3,6 +3,7 @@ package com.example.sandbox;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +17,8 @@ import android.widget.ListView;
 public class ItemsFragment extends Fragment {
 
     Button b1;
+    Callbacks mListener;
+    EditText editText;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,13 +30,15 @@ public class ItemsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                System.out.println("CLICKED");
+               addNewItem(v);
             }
         });
+        editText = (EditText) view.findViewById(R.id.edit_text);
 
         return view;
     }
 
-    Callbacks mListener;
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -70,9 +75,9 @@ public class ItemsFragment extends Fragment {
     }
 
     public void addNewItem(View view) {
-        EditText editText = (EditText) getView().findViewById(R.id.edit_text);
+        //EditText editText = (EditText) getView().findViewById(R.id.edit_text);
         String theText = editText.getText().toString();
-
+        Log.d("Sandbox", theText);
     }
 
     /*
