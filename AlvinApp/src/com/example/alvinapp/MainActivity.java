@@ -119,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
         String message = editText.getText().toString();
 
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-
+        Log.d("AlvinApp", "Send message");
         intent.putExtra(EXTRA_MESSAGE, message);
         this.startActivity(intent);
     }

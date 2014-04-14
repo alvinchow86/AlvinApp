@@ -5,18 +5,32 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 
 public class ItemsFragment extends Fragment {
 
+    Button b1;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View view =  inflater.inflate(R.layout.fragment_list, container, false);
+
+        b1 = (Button) view.findViewById(R.id.button);
+        b1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               System.out.println("CLICKED");
+            }
+        });
+
+        return view;
     }
 
     Callbacks mListener;
@@ -53,6 +67,12 @@ public class ItemsFragment extends Fragment {
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString() + "must implement Callbacks");
         }
+    }
+
+    public void addNewItem(View view) {
+        EditText editText = (EditText) getView().findViewById(R.id.edit_text);
+        String theText = editText.getText().toString();
+
     }
 
     /*
