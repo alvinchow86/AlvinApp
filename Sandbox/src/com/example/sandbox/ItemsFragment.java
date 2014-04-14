@@ -1,5 +1,7 @@
 package com.example.sandbox;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,10 @@ public class ItemsFragment extends Fragment {
     Button b1;
     Callbacks mListener;
     EditText editText;
+    //String[] items = {"Dispatch","Merchant","Consumer","Driver"};
+    ArrayList<String> items = new ArrayList<String>();
+    ListView listView;
+    ArrayAdapter listAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +41,11 @@ public class ItemsFragment extends Fragment {
         });
         editText = (EditText) view.findViewById(R.id.edit_text);
 
+        items.add("Dispatch");
+        items.add("Merchant");
+        items.add("Consumer");
+        items.add("Driver");
+
         return view;
     }
 
@@ -44,10 +55,10 @@ public class ItemsFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        String[] items = {"Dispatch","Merchant","Consumer","Driver"};
+        //String[] items = {"Dispatch","Merchant","Consumer","Driver"};
 
-        ListView listView = (ListView) getView().findViewById(R.id.list);
-        ArrayAdapter listAdapter = new ArrayAdapter<String>(getActivity(),
+        listView = (ListView) getView().findViewById(R.id.list);
+        listAdapter = new ArrayAdapter<String>(getActivity(),
                      android.R.layout.simple_list_item_activated_1, items);
         listView.setAdapter(listAdapter);
 
@@ -78,6 +89,9 @@ public class ItemsFragment extends Fragment {
         //EditText editText = (EditText) getView().findViewById(R.id.edit_text);
         String theText = editText.getText().toString();
         Log.d("Sandbox", theText);
+        items.add(theText);
+        listAdapter.notifyDataSetChanged();
+
     }
 
     /*
